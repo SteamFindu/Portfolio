@@ -60,12 +60,13 @@ function createLights() {
 
 function createMaterials() {
   material = new THREE.MeshPhongMaterial();
-  linematerial = new THREE.MeshPhongMaterial({emissive: 'blue'});
+  linematerial = new THREE.MeshPhongMaterial({color: 'blue'});
 }
 
 function createGeometries() {
   geometry = new THREE.TorusKnotBufferGeometry(6,2,64,10,3,2);
   wireframe = new THREE.WireframeGeometry(geometry);
+
 }
 
 function createMeshes() {
@@ -73,7 +74,7 @@ function createMeshes() {
 
   line = new THREE.LineSegments(wireframe, linematerial)
   line.material.depthTest = true;
-  line.material.opacity = 0.25;
+  line.material.opacity = 1.0;
   line.material.transparency = true;
 
   scene.add(mesh, line);
@@ -91,9 +92,8 @@ function createRenderer() {
 
 // called once per frame
 function update(){
-  mesh.rotation.y += .01;
+  mesh.rotation.y += 0.01;
   line.rotation.y += 0.01;
-
 }
 
 function render() {
